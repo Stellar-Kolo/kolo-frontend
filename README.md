@@ -35,11 +35,11 @@ The contract code has a [Testnet deployment](https://stellar.expert/explorer/tes
 
 ## Repositories
 
-| Project | Responsibility |
-| --- | --- |
-| [kolo-frontend](https://github.com/Stellar-Kolo/kolo-frontend) | Landing page and web experience for members and administrators |
-| [kolo-backend](https://github.com/Stellar-Kolo/kolo-backend) | WhatsApp workflows, application data, Stellar services, and Soroban orchestration |
-| [kolo-contracts](https://github.com/Stellar-Kolo/kolo-contracts) | Rust Soroban savings-group contract and contract tests |
+| Project                                                          | Responsibility                                                                    |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [kolo-frontend](https://github.com/Stellar-Kolo/kolo-frontend)   | Landing page and web experience for members and administrators                    |
+| [kolo-backend](https://github.com/Stellar-Kolo/kolo-backend)     | WhatsApp workflows, application data, Stellar services, and Soroban orchestration |
+| [kolo-contracts](https://github.com/Stellar-Kolo/kolo-contracts) | Rust Soroban savings-group contract and contract tests                            |
 
 ## What is in this repository
 

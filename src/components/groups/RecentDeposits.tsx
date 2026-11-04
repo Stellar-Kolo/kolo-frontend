@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface Deposit {
   id: string;
@@ -28,9 +29,11 @@ export const RecentDeposits: React.FC<RecentDepositsProps> = ({ deposits }) => {
                 className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden mr-3 ${deposit.isCurrentUser ? "bg-green-100 text-green-600" : "bg-blue-100 text-blue-600"}`}
               >
                 {deposit.avatarUrl ? (
-                  <img
+                  <Image
                     src={deposit.avatarUrl}
                     alt={deposit.name}
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
                   />
                 ) : (

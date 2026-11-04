@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface GroupHeaderProps {
   title: string;
@@ -18,13 +19,28 @@ export const GroupHeader: React.FC<GroupHeaderProps> = ({
         <div className="flex items-center text-sm text-gray-500">
           <div className="flex -space-x-2 mr-3">
             <div className="w-8 h-8 rounded-full bg-gray-300 border-2 border-white overflow-hidden">
-              <img src="https://i.pravatar.cc/150?u=1" alt="avatar" />
+              <Image
+                src="https://i.pravatar.cc/150?u=1"
+                alt="avatar"
+                width={32}
+                height={32}
+              />
             </div>
             <div className="w-8 h-8 rounded-full bg-gray-300 border-2 border-white overflow-hidden">
-              <img src="https://i.pravatar.cc/150?u=2" alt="avatar" />
+              <Image
+                src="https://i.pravatar.cc/150?u=2"
+                alt="avatar"
+                width={32}
+                height={32}
+              />
             </div>
             <div className="w-8 h-8 rounded-full bg-gray-300 border-2 border-white overflow-hidden">
-              <img src="https://i.pravatar.cc/150?u=3" alt="avatar" />
+              <Image
+                src="https://i.pravatar.cc/150?u=3"
+                alt="avatar"
+                width={32}
+                height={32}
+              />
             </div>
             <div className="w-8 h-8 rounded-full bg-[#5fe3a1] border-2 border-white flex items-center justify-center text-xs font-semibold text-[#148354]">
               +5

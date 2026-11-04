@@ -39,20 +39,52 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-[#f6f8fc] px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <section
+      id="faq"
+      className="bg-[#f6f8fc] px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+    >
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#4775d1]">Straight answers</p>
-          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-[#101a2c] sm:text-4xl">What we’re building—and what we’re not.</h2>
+          <p className="text-xs font-bold uppercase tracking-[.2em] text-[#4775d1]">
+            Straight answers
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-[#101a2c] sm:text-4xl">
+            What we’re building—and what we’re not.
+          </h2>
         </div>
         <div className="space-y-3">
           {faqs.map(({ question, answer }, index) => (
-            <div key={question} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-              <button type="button" className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left sm:px-6" onClick={() => setOpen(open === index ? null : index)} aria-expanded={open === index} aria-controls={`faq-answer-${index}`}>
-                <span className="font-display text-base font-semibold text-[#101a2c] sm:text-lg">{question}</span>
-                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f1f4f9] text-lg text-[#526b96] transition-transform ${open === index ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+            <div
+              key={question}
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+            >
+              <button
+                type="button"
+                className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left sm:px-6"
+                onClick={() => setOpen(open === index ? null : index)}
+                aria-expanded={open === index}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span className="font-display text-base font-semibold text-[#101a2c] sm:text-lg">
+                  {question}
+                </span>
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f1f4f9] text-lg text-[#526b96] transition-transform ${open === index ? "rotate-45" : ""}`}
+                  aria-hidden="true"
+                >
+                  +
+                </span>
               </button>
-              {open === index && <div id={`faq-answer-${index}`} className="px-5 pb-5 sm:px-6 sm:pb-6"><p className="max-w-2xl text-sm leading-6 text-slate-600">{answer}</p></div>}
+              {open === index && (
+                <div
+                  id={`faq-answer-${index}`}
+                  className="px-5 pb-5 sm:px-6 sm:pb-6"
+                >
+                  <p className="max-w-2xl text-sm leading-6 text-slate-600">
+                    {answer}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
         </div>

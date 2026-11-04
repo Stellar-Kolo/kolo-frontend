@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Home, Plane, Plus, ChevronRight } from "lucide-react";
 import type { SavingsGroup } from "@/hooks/useGroups";
 import { ProgressRing } from "@/components/dashboard/ProgressRing";
@@ -119,10 +120,12 @@ export function SavingsCircles({
                         {avatar}
                       </div>
                     ) : (
-                      <img
+                      <Image
                         key={idx}
                         src={avatar}
                         alt="Member"
+                        width={24}
+                        height={24}
                         className="w-6 h-6 rounded-full border-2 border-white object-cover z-20"
                       />
                     ),
