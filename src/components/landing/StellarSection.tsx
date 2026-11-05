@@ -25,6 +25,27 @@ const layers = [
   },
 ];
 
+const implementationStatus = [
+  {
+    label: "Soroban rules",
+    value: "Rotational + GoalBased",
+    detail:
+      "Membership, contribution checks, payout order, and withdrawals are represented in the contract.",
+  },
+  {
+    label: "Amount safety",
+    value: "Exact stroop conversion",
+    detail:
+      "Backend amounts are converted with integer arithmetic before contract calls.",
+  },
+  {
+    label: "Settlement state",
+    value: "Confirmed + reconciled",
+    detail:
+      "Submitted transactions remain pending until confirmation and database reconciliation.",
+  },
+];
+
 export default function StellarSection() {
   return (
     <section
@@ -120,6 +141,43 @@ export default function StellarSection() {
             <span className="text-xl" aria-hidden="true">
               ✳
             </span>
+          </div>
+          <div className="mt-4 rounded-2xl border border-white/10 bg-[#0c1423] p-5">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#9fadc2]">
+                  Implementation status
+                </p>
+                <p className="mt-1 font-display text-base font-semibold text-white">
+                  Building the path from group agreement to verified settlement
+                </p>
+              </div>
+              <span className="rounded-full border border-[#b7ed79]/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-[#b7ed79]">
+                Testnet-first
+              </span>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              {implementationStatus.map(({ label, value, detail }) => (
+                <div
+                  key={label}
+                  className="rounded-xl border border-white/[.08] bg-white/[.04] p-3"
+                >
+                  <p className="text-[10px] font-semibold uppercase tracking-[.12em] text-[#8293ad]">
+                    {label}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold text-[#dce7fb]">
+                    {value}
+                  </p>
+                  <p className="mt-2 text-xs leading-5 text-[#9aa9bf]">
+                    {detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-5 text-[#9aa9bf]">
+              The web companion is still a prototype. Use the repositories below
+              to inspect the implementation and Testnet-only development status.
+            </p>
           </div>
         </div>
       </div>
