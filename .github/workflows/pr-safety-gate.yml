@@ -1,0 +1,45 @@
+name: PR Safety Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  scan:
+    name: Scan PR changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR contents
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Scan changed files and content
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed_files="$(git diff --name-only --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA")"
+          changed_diff="$(git diff --no-ext-diff --unified=0 "$BASE_SHA" "$HEAD_SHA")"
+
+          if printf '%s\n' "$changed_files" | grep -Eiq '(^|/)(polinrider|polin-rider|polin rider)(/|$)' ||
+             printf '%s\n' "$changed_diff" | grep -Eiq 'polinrider|polin-rider|polin rider'; then
+            echo 'Blocked: a PolinRider indicator was found in the PR.'
+            exit 1
+          fi
+
+          if printf '%s\n' "$changed_files" | grep -Eiq '(^|/)(\.env|\.env\.[^.]|id_rsa|.*\.pem)$'; then
+            echo 'Blocked: a likely secret or private-key file was changed.'
+            exit 1
+          fi
+
+          git diff --check "$BASE_SHA" "$HEAD_SHA"
+          echo 'PR safety scan passed.'
+
